@@ -14,12 +14,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
             </figure>`;
             html += figure;
        });
-
         gallerie[0].innerHTML = html;
+    }
+    logWorks();
+
+    async function getCategories(){
+        const reponse = await fetch("http://localhost:5678/api/categories");
+        const categories = await reponse.json();
+        const filters = document.getElementsByClassName("filterbar");
+
+        categories.forEach((item)=>{
+            const name = item["name"];
+            let a = `<a href="#">
+            <div class="filtertexticon">
+                <span>${name}</span>
+            </div>
+        </a>`;
+
+        filters[0].innerHTML += a;
+
+        });
         
 
-
-    }
-
-    logWorks();
+    } 
+    getCategories();
 });
