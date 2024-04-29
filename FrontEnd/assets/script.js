@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             html += figure;
        });
 
-gallerie.innerHTML = html;
+        gallerie[0].innerHTML = html;
         
 
 
