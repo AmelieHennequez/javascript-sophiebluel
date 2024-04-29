@@ -23,6 +23,42 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+/* Filter bar */
+
+.filterbar {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+	text-decoration: none;
+}
+
+.filterbar a {
+	text-decoration: none;
+}
+
+.filtertexticon {
+    width: auto;
+    height: 37px;
+    border: solid 2px #1D6154;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    padding-left: 30px;
+	font-family: 'Syne';
+	color: #1D6154;
+
+}
+
+.filtertexticon:hover {
+    background-color: #1D6154;
+	text-decoration: none;
+	color: white;
+	
+}
+
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
