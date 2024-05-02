@@ -1,21 +1,31 @@
-document.addEventListener("DOMContentLoaded", function(event) {
     async function logWorks() {
         const reponse = await fetch("http://localhost:5678/api/works");
         const works = await reponse.json();
-        const gallerie = document.getElementsByClassName("gallery");
-        let html = "";
+        const gallerie = document.getElementById("work"); // Récupere l'élément par son ID exemple === <div class="gallery" id="work"></div>
+ 
 
-        works.forEach((item)=>{
-            const title = item["title"];
-            const image = item["imageUrl"];
-            let figure =`<figure>
-                <img src="${image}" alt="${title}">
-                <figcaption>${title}</figcaption>
-            </figure>`;
-            html += figure;
-       });
-        gallerie[0].innerHTML = html;
+    //      <div id=work> 
+    //         <figure> Xfois
+    //            <img src="LA-SOURCE" alt="LE-TITRE"> OK
+    //            <figcaption>LE-TITRE</figcaption> OK 
+    //         </figure>
+    //      </div>
+
+        works.forEach((item)=>{ // Pour chaque travaux je récupere élément par élément
+            const title = item["title"]; // Je récupère le titre de l'élément courant = "JE SUIS UN TITRE"
+            const imageUrl = item["imageUrl"]; // Je récupère le lien de l'image de l'élement courant === "http://localhost:5678/MONIMAGE.png"
+            let image = document.createElement("img"); // Création de l'élement image === <img />
+            image.src=imageUrl; // J'applique la source de l'image === <img src='LA-SOURCE' />
+            image.alt = title; // J'applique la source de l'image === <img src='LA-SOURCE'  alt='JE SUIS UNE IMAGE'/>
+            let figcaption = document.createElement("figcaption"); // Création de l'élement figcaption === <figcaption></figcaption>
+            figcaption.textContent = title;
+            let div = document.createElement("figure"); // Création de l'élement figure === <figure></figure>
+            div.appendChild(image); 
+            div.appendChild(figcaption);
+            gallerie.appendChild(div);
+        });
     }
+
     logWorks();
 
     async function getCategories(){
@@ -38,4 +48,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     } 
     getCategories();
-});
