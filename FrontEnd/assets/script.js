@@ -28,7 +28,6 @@
 
         categories.forEach((item)=>{
             const name = item["name"]; // Je récupère le nom de l'élément
-            // const id = item["id"]; // Je récupère l'Id de l'élément
             let lien = document.createElement("a"); //Création de l'élément a
             lien.href = "#";
             let span = document.createElement("span"); // Création de l'élément <span></span>
@@ -49,29 +48,10 @@
         filtertexticon.appendChild(span);
         lien.appendChild(filtertexticon);
 
-        filterbar.insertBefore(lien, filterbar.children[0]);
+        filterbar.insertBefore(lien, filterbar.children[0]); 
 
         const work = document.getElementById("work");
         work.insertAdjacentElement("beforebegin", filterbar);
-
-        // categories.forEach((item)=>{
-        //     const name = item["name"];
-        //     let a = `<a href="#">
-        //     <div class="filtertexticon">
-        //         <span>${name}</span>
-        //     </div>
-        // </a>`;
-
-        // filters[0].innerHTML += a;
-
-		// <!-- <div class="filterbar">
-		// 	<a href="#">
-		// 		<div class="filtertexticon">
-		// 			<span>Tous</span>
-		// 		</div>
-		// 	</a>
-		// </div>
-        
-
+    
     } 
     getCategories();
