@@ -2,14 +2,6 @@
         const reponse = await fetch("http://localhost:5678/api/works");
         const works = await reponse.json();
         const gallerie = document.getElementById("work"); // Récupere l'élément par son ID exemple === <div class="gallery" id="work"></div>
- 
-
-    //      <div id=work> 
-    //         <figure> Xfois
-    //            <img src="LA-SOURCE" alt="LE-TITRE"> OK
-    //            <figcaption>LE-TITRE</figcaption> OK 
-    //         </figure>
-    //      </div>
 
         works.forEach((item)=>{ // Pour chaque travaux je récupere élément par élément
             const title = item["title"]; // Je récupère le titre de l'élément courant = "JE SUIS UN TITRE"
@@ -31,19 +23,54 @@
     async function getCategories(){
         const reponse = await fetch("http://localhost:5678/api/categories");
         const categories = await reponse.json();
-        const filters = document.getElementsByClassName("filterbar");
+        const filterbar = document.createElement("div"); // Création de l'élément <div></div>
+        filterbar.className = "filterbar";
 
         categories.forEach((item)=>{
-            const name = item["name"];
-            let a = `<a href="#">
-            <div class="filtertexticon">
-                <span>${name}</span>
-            </div>
-        </a>`;
-
-        filters[0].innerHTML += a;
-
+            const name = item["name"]; // Je récupère le nom de l'élément
+            // const id = item["id"]; // Je récupère l'Id de l'élément
+            let lien = document.createElement("a"); //Création de l'élément a
+            lien.href = "#";
+            let span = document.createElement("span"); // Création de l'élément <span></span>
+            span.textContent = name;
+            let filtertexticon = document.createElement("div"); // Création de l'élément <div></div>
+            filtertexticon.className = "filtertexticon";
+            filtertexticon.appendChild(span);
+            lien.appendChild(filtertexticon);
+            filterbar.appendChild(lien);
         });
+
+        let lien = document.createElement("a"); //Création de l'élément a
+        lien.href = "#";
+        let span = document.createElement("span"); // Création de l'élément <span></span>
+        span.textContent = "Tous";
+        let filtertexticon = document.createElement("div"); // Création de l'élément <div></div>
+        filtertexticon.className = "filtertexticon";
+        filtertexticon.appendChild(span);
+        lien.appendChild(filtertexticon);
+
+        filterbar.insertBefore(lien, filterbar.children[0]);
+
+        const work = document.getElementById("work");
+        work.insertAdjacentElement("beforebegin", filterbar);
+
+        // categories.forEach((item)=>{
+        //     const name = item["name"];
+        //     let a = `<a href="#">
+        //     <div class="filtertexticon">
+        //         <span>${name}</span>
+        //     </div>
+        // </a>`;
+
+        // filters[0].innerHTML += a;
+
+		// <!-- <div class="filterbar">
+		// 	<a href="#">
+		// 		<div class="filtertexticon">
+		// 			<span>Tous</span>
+		// 		</div>
+		// 	</a>
+		// </div>
         
 
     } 
