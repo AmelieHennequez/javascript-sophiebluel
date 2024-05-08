@@ -14,7 +14,9 @@
             let div = document.createElement("figure"); // Création de l'élement figure === <figure></figure>
             div.appendChild(image); 
             div.appendChild(figcaption);
+            div.dataset.categoryId = item["categoryId"]; // J'applique à ma div figure l'attribut data-categoryId
             gallerie.appendChild(div);
+            
         });
     }
 
@@ -29,13 +31,17 @@
         categories.forEach((item)=>{
             const name = item["name"]; // Je récupère le nom de l'élément
             let lien = document.createElement("a"); //Création de l'élément a
-            lien.href = "#";
+            // lien.href = "#";
+            lien.dataset.categoryId = item["id"]; // Je rajoute l'id sur le lien de mon élément
+            lien.addEventListener("click", function () {
+                triProjet(item["id"]);
+            });
             let span = document.createElement("span"); // Création de l'élément <span></span>
             span.textContent = name;
             let filtertexticon = document.createElement("div"); // Création de l'élément <div></div>
             filtertexticon.className = "filtertexticon";
-            filtertexticon.appendChild(span);
             lien.appendChild(filtertexticon);
+            filtertexticon.appendChild(span);
             filterbar.appendChild(lien);
         });
 
@@ -55,3 +61,27 @@
     
     } 
     getCategories();
+
+    function triProjet(stockage){
+        const lestravaux = document.getElementById("work").getElementsByTagName("figure"); //je récupère mes figures qui sont ds l'élément id work et je les mets dans lestravaux
+        
+        for (i=0; i< lestravaux.length; i++)
+            {
+                const travail = lestravaux[i];
+                const travailCategoryId = travail.dataset.categoryId;
+                console.log(travailCategoryId, stockage);
+                if (travailCategoryId==stockage){
+                    console.log("c ca");
+                } else 
+                {
+                    console.log("c pas ca");
+                } 
+            }
+
+
+
+    }
+
+//passe categoryid a la fonction tri projet et le voir afficher 
+    // au clique du bouton on appelle la fonction triProjet, celle ci 
+    // prend un paramètre qui est l'id catégorie, puis trier work
