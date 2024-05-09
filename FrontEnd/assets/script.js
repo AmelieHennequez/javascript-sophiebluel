@@ -70,9 +70,18 @@
                 const travail = lestravaux[i]; // Récupération de l'élément courant
                 const travailCategoryId = travail.dataset.categoryId;//Récupération de l'id de sa catégorie
                 if (travailCategoryId==idFiltre){ // Si l'id de la catégorie est égal a l'id du filtre
+                    if (travail.classList.contains("secacher")){
+                        travail.classList.remove("secacher");
+                    }
+                    travail.classList.add("afficher");
                     // alors tu affiches l'élément = à l'id du filtre
                 } else // Sinon
                 {
+                    if (travail.classList.contains("afficher")){
+                        travail.classList.remove("afficher");
+                    }
+
+                    travail.classList.add("secacher");
                     // Tu ne l'affiches pas 
                 }
             }
