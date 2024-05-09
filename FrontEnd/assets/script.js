@@ -62,26 +62,18 @@
     } 
     getCategories();
 
-    function triProjet(stockage){
+    function triProjet(idFiltre){
         const lestravaux = document.getElementById("work").getElementsByTagName("figure"); //je récupère mes figures qui sont ds l'élément id work et je les mets dans lestravaux
         
-        for (i=0; i< lestravaux.length; i++)
+        for (i=0; i< lestravaux.length; i++)//si i est < à la longueur du tableau; à la fin du tour de boucle tu incréments (tjrs de 1)
             {
-                const travail = lestravaux[i];
-                const travailCategoryId = travail.dataset.categoryId;
-                console.log(travailCategoryId, stockage);
-                if (travailCategoryId==stockage){
-                    console.log("c ca");
-                } else 
+                const travail = lestravaux[i]; // Récupération de l'élément courant
+                const travailCategoryId = travail.dataset.categoryId;//Récupération de l'id de sa catégorie
+                if (travailCategoryId==idFiltre){ // Si l'id de la catégorie est égal a l'id du filtre
+                    // alors tu affiches l'élément = à l'id du filtre
+                } else // Sinon
                 {
-                    console.log("c pas ca");
-                } 
+                    // Tu ne l'affiches pas 
+                }
             }
-
-
-
     }
-
-//passe categoryid a la fonction tri projet et le voir afficher 
-    // au clique du bouton on appelle la fonction triProjet, celle ci 
-    // prend un paramètre qui est l'id catégorie, puis trier work
