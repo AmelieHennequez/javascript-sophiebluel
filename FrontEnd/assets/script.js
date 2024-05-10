@@ -14,7 +14,7 @@
             let div = document.createElement("figure"); // Création de l'élement figure === <figure></figure>
             div.appendChild(image); 
             div.appendChild(figcaption);
-            div.dataset.categoryId = item["categoryId"]; // J'applique à ma div figure l'attribut data-categoryId
+            div.dataset.categoryId = item["categoryId"]; // J'applique à figure l'attribut data-category-id
             gallerie.appendChild(div);
             
         });
@@ -31,10 +31,8 @@
         categories.forEach((item)=>{
             const name = item["name"]; // Je récupère le nom de l'élément
             let lien = document.createElement("a"); //Création de l'élément a
-            // lien.href = "#";
-            lien.dataset.categoryId = item["id"]; // Je rajoute l'id sur le lien de mon élément
             lien.addEventListener("click", function () {
-                triProjet(item["id"]);
+                triProjet(item["id"]); // j'appelle la fonction triProjet avec mon id en paramètre pour que tu EXECUTES
             });
             let span = document.createElement("span"); // Création de l'élément <span></span>
             span.textContent = name;
@@ -46,9 +44,11 @@
         });
 
         let lien = document.createElement("a"); //Création de l'élément a
-        lien.href = "#";
         let span = document.createElement("span"); // Création de l'élément <span></span>
         span.textContent = "Tous";
+        lien.addEventListener("click", function () {
+            triProjet(0);
+        });
         let filtertexticon = document.createElement("div"); // Création de l'élément <div></div>
         filtertexticon.className = "filtertexticon";
         filtertexticon.appendChild(span);
@@ -64,7 +64,6 @@
 
     function triProjet(idFiltre){
         const lestravaux = document.getElementById("work").getElementsByTagName("figure"); //je récupère mes figures qui sont ds l'élément id work et je les mets dans lestravaux
-        
         for (i=0; i< lestravaux.length; i++)//si i est < à la longueur du tableau; à la fin du tour de boucle tu incréments (tjrs de 1)
             {
                 const travail = lestravaux[i]; // Récupération de l'élément courant
@@ -75,7 +74,13 @@
                     }
                     travail.classList.add("afficher");
                     // alors tu affiches l'élément = à l'id du filtre
-                } else // Sinon
+                } else if (idFiltre===0) {
+                        if (travail.classList.contains("secacher")){
+                            travail.classList.remove("secacher");
+                            travail.classList.add("afficher");
+                        }
+                }
+                else // Sinon
                 {
                     if (travail.classList.contains("afficher")){
                         travail.classList.remove("afficher");

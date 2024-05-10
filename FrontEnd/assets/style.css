@@ -46,6 +46,7 @@ time, mark, audio, video {
 
 .filterbar a {
 	text-decoration: none;
+	cursor: default;
 }
 
 .filtertexticon {
