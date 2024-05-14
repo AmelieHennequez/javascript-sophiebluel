@@ -91,3 +91,22 @@
                 }
             }
     }
+
+    if (window.localStorage.getItem("userToken")!==null){
+        const logout = document.getElementById("logout");
+        logout.style.display = "block";
+        const login = document.getElementById("login");
+        login.style.display = "none";
+    }
+
+    function logOut() {
+        if (window.localStorage.getItem("userToken") !==null){
+            window.localStorage.removeItem("userToken");
+            const logout = document.getElementById("logout");
+            logout.style.display = "none";
+            const login = document.getElementById("login");
+            login.style.display = "block";
+
+        }
+    }
+

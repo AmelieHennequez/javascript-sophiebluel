@@ -27,6 +27,10 @@ time, mark, audio, video {
 a {
 	text-decoration: none;
 	color: black;
+	cursor: default;
+}
+li {
+	cursor: default;
 }
 
 /* Filter bar */
@@ -121,6 +125,16 @@ color: #3D3D3D;
 	color: #3D3D3D;
 	margin-left: 120px;
 	text-decoration: underline;
+}
+
+#logout {
+	display: none;
+	cursor: default;
+}
+
+#errormsg {
+	color: red;
+	display: none;
 }
 
 footer {
