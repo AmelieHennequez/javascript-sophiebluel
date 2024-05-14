@@ -2,13 +2,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-.secacher {
-	display: none;
-}
-
-.afficher {
-	display: block;
-}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -29,6 +22,11 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+}
+
+a {
+	text-decoration: none;
+	color: black;
 }
 
 /* Filter bar */
@@ -70,6 +68,68 @@ time, mark, audio, video {
 	
 }
 
+.secacher {
+	display: none;
+}
+
+.afficher {
+	display: block;
+}
+
+/* Page de connexion */
+
+.formulaire {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.formulaire h2 {
+color: #1D6154;
+font-size: 30px;
+font-weight: normal;
+padding-bottom: 30px;
+}
+
+.formulaire h3 {
+margin-top: 30px;
+margin-bottom: 10px;
+color: #3D3D3D;
+}
+
+.formulaire input {
+	width: 379px;
+	height: 51px;
+	border: none;
+	box-shadow: 0px 4px 14px 0px #00000017;
+}
+
+.bouton input {
+	background-color: #1D6154;
+	color: white;
+	border-radius: 60px;
+	width: 179px;
+	height: 36px;
+	margin-top: 30px;
+	margin-left: 100px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.formulaire a {
+	color: #3D3D3D;
+	margin-left: 120px;
+	text-decoration: underline;
+}
+
+footer {
+	margin-top: 400px;
+}
+
+footer li {
+	font-size: 14px;
+}
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
