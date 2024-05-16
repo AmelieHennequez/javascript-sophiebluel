@@ -8,6 +8,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
@@ -36,7 +37,10 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="projectsandmodal">
+			<h2>Mes Projets</h2>
+			<a href="#modal" id="modif" onclick="displayModal()"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
+		</div>
 
 		<div class="gallery" id="work"></div>
 	</section>
@@ -63,6 +67,16 @@
 		</ul>
 	</nav>
 </footer>
+
+<aside id="modal">
+	<div class="modalcontent">
+		<span class="close" onclick="hiddenModal()">&times;</span>
+		<p>Galerie photo</p>
+		<div id="pictures">
+		</div>
+	</div>
+</aside>
+
 <script src="./assets/script.js"></script>
 </body>
 </html>

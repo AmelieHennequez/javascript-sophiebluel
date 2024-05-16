@@ -97,6 +97,8 @@
         logout.style.display = "block";
         const login = document.getElementById("login");
         login.style.display = "none";
+        const modif = document.getElementById("modif");
+        modif.style.display = "block";
     }
 
     function logOut() {
@@ -106,7 +108,36 @@
             logout.style.display = "none";
             const login = document.getElementById("login");
             login.style.display = "block";
+            const modif = document.getElementById("modif");
+            modif.style.display = "none";
 
         }
     }
 
+    async function displayModal() {
+        const idmodal = document.getElementById("modal");
+        const pictures = document.getElementById("pictures");
+        idmodal.style.display = "block";
+        const reponse = await fetch("http://localhost:5678/api/works");
+        const works = await reponse.json();
+        works.forEach((item)=>{ // Pour chaque travaux je récupere élément par élément
+            const title = item["title"]; // Je récupère le titre de l'élément courant = "JE SUIS UN TITRE"
+            const imageUrl = item["imageUrl"]; // Je récupère le lien de l'image de l'élement courant === "http://localhost:5678/MONIMAGE.png"
+            let image = document.createElement("img"); // Création de l'élement image === <img />
+            image.src=imageUrl; // J'applique la source de l'image === <img src='LA-SOURCE' />
+            image.alt = title; // J'applique la source de l'image === <img src='LA-SOURCE'  alt='JE SUIS UNE IMAGE'/>
+            let div = document.createElement("div"); // Création de l'élement div
+            div.classList.add("picture");
+            div.appendChild(image); 
+            pictures.appendChild(div);
+            
+        });
+    }
+
+    function hiddenModal() {
+        const idmodal = document.getElementById("modal");
+        idmodal.style.display = "none";
+    }
+
+    
+    // donne le style ou ya la div 
