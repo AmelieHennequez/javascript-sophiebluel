@@ -21,9 +21,3 @@ if (response.status===200) {
 });
 
 
-
-
-
-
-// else -> afficher un msg d'erreur
-
