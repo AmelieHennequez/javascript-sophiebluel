@@ -39,7 +39,7 @@
 	<section id="portfolio">
 		<div class="projectsandmodal">
 			<h2>Mes Projets</h2>
-			<a href="#modal" id="modif" onclick="displayModal()"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
+			<a href="#modal" id="modif" onclick="displayModal()"><i id="item" class="fa-regular fa-pen-to-square"></i>modifier</a>
 		</div>
 
 		<div class="gallery" id="work"></div>
@@ -70,10 +70,12 @@
 
 <aside id="modal">
 	<div class="modalcontent">
-		<span class="close" onclick="hiddenModal()">&times;</span>
+		<span class="close" onclick="hiddenModal()"><i class="fa-solid fa-xmark fa-sm"></i></span>
 		<p>Galerie photo</p>
 		<div id="pictures">
 		</div>
+		<div id="line"></div>
+		<button id="btn" type="button">Ajouter une photo</button>
 	</div>
 </aside>
 

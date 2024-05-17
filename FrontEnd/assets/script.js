@@ -130,14 +130,25 @@
             div.classList.add("picture");
             div.appendChild(image); 
             pictures.appendChild(div);
+            let backgroundicon = document.createElement("div"); // Création de l'élément div
+            backgroundicon.classList.add("backgroundicon");
+            let icontrash = document.createElement("i");
+            icontrash.classList.add("fa-solid", "fa-trash-can", "fa-xs");
+            div.appendChild(backgroundicon);
+            backgroundicon.appendChild(icontrash);
             
         });
     }
 
     function hiddenModal() {
         const idmodal = document.getElementById("modal");
+        const pictures = document.getElementById("pictures");
         idmodal.style.display = "none";
+        pictures.innerHTML = "";
     }
 
-    
-    // donne le style ou ya la div 
+
+
+    // <div class="">
+    //      <i class="fa-solid fa-trash-can"></i>
+    // </div>

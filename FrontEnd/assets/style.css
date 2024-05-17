@@ -154,6 +154,9 @@ color: #3D3D3D;
 }
 
 /* la Modale */
+#item {
+	padding-right: 10px;
+}
 
 #modal {
 	position: fixed;
@@ -171,13 +174,35 @@ color: #3D3D3D;
 .modalcontent {
 	background-color: white;
 	margin: 15% auto;
-	border: 1px solid black;
+	border: 1px solid white;
 	width: 630px;
 	height: 688px;
+	border-radius: 10px;
 }
 
-.pictures {
+.close {
+	font-size: 24px;
+	display: block;
+	cursor: default;
+	padding-left: 590px;
+	padding-top: 12px;
+}
+
+.modalcontent p {
+	font-size: 26px;
+	text-align: center;
+}
+
+#pictures {
 	display: flex;
+	gap: 20px;
+	padding-top: 40px;
+	padding-left: 85px;
+	flex-wrap: wrap;
+}
+
+.picture {
+	position: relative;
 }
 
 .picture img {
@@ -185,8 +210,46 @@ color: #3D3D3D;
 	height: 102.57px;
 }
 
+#line {
+	height: 1px;
+	width: 470px;
+	background-color:#B3B3B3;
+	border: 1px;
+	margin-top: 78px;
+	margin-left: 85px;
 
+}
 
+#btn {
+	margin-top: 55px;
+	margin-left: 190px;
+	border-radius: 60px;
+	border: 1px solid #1D6154;
+	background-color: #1D6154;
+	height: 36px;
+	width: 237px;
+	font-size: 14px;
+	color: white;
+	font-family: 'Syne';
+
+}
+
+.backgroundicon {
+	background-color: black;
+    width: 16px;
+    border-radius: 2px;
+    height: 17px;
+    z-index: 3;
+    position: absolute;
+    top: 5px;
+    left: 57px;
+}
+
+.backgroundicon i {
+	color: white;
+	margin-top: 8px;
+    margin-left: 3px;
+}
 
 
 
