@@ -99,9 +99,15 @@
         login.style.display = "none";
         const modif = document.getElementById("modif");
         modif.style.display = "block";
+        modif.addEventListener('click', function() {
+            displayModal();
+            });
+        logout.addEventListener('click', function() {
+                logOut();
+            });
     }
 
-    function logOut() {
+    function logOut() { 
         if (window.localStorage.getItem("userToken") !==null){
             window.localStorage.removeItem("userToken");
             const logout = document.getElementById("logout");
@@ -110,7 +116,6 @@
             login.style.display = "block";
             const modif = document.getElementById("modif");
             modif.style.display = "none";
-
         }
     }
 
@@ -120,6 +125,7 @@
         idmodal.style.display = "block";
         const reponse = await fetch("http://localhost:5678/api/works");
         const works = await reponse.json();
+
         works.forEach((item)=>{ // Pour chaque travaux je récupere élément par élément
             const title = item["title"]; // Je récupère le titre de l'élément courant = "JE SUIS UN TITRE"
             const imageUrl = item["imageUrl"]; // Je récupère le lien de l'image de l'élement courant === "http://localhost:5678/MONIMAGE.png"
@@ -136,8 +142,19 @@
             icontrash.classList.add("fa-solid", "fa-trash-can", "fa-xs");
             div.appendChild(backgroundicon);
             backgroundicon.appendChild(icontrash);
-            
         });
+
+        const closeModal = document.getElementById("closemodal");
+        closeModal.addEventListener('click', function() {
+            hiddenModal();
+        });
+
+        const btnaddpicture = document.getElementById("btnAddPicture");
+        btnaddpicture.addEventListener('click', function() {
+            displayAddPicture();
+        });
+
+
     }
 
     function hiddenModal() {
@@ -145,10 +162,18 @@
         const pictures = document.getElementById("pictures");
         idmodal.style.display = "none";
         pictures.innerHTML = "";
+        
+        const addpicture = document.getElementById("addpicture");
+        const photogallery = document.getElementById("photoGallery");
+        photogallery.style.display = "block";
+        addpicture.style.display = "none";
     }
 
 
+    function displayAddPicture() {
+        const addpicture = document.getElementById("addpicture");
+        const photogallery = document.getElementById("photoGallery");
+        photogallery.style.display = "none";
+        addpicture.style.display = "block";
+    }
 
-    // <div class="">
-    //      <i class="fa-solid fa-trash-can"></i>
-    // </div>

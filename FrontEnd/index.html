@@ -19,7 +19,7 @@
 			<li>projets</li>
 			<li>contact</li>
 			<a id="login" href="login.html" alt="login"><li>login</li></a>
-			<li id="logout" onclick="logOut()">logout</li>
+			<li id="logout">logout</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -39,7 +39,7 @@
 	<section id="portfolio">
 		<div class="projectsandmodal">
 			<h2>Mes Projets</h2>
-			<a href="#modal" id="modif" onclick="displayModal()"><i id="item" class="fa-regular fa-pen-to-square"></i>modifier</a>
+			<a href="#modal" id="modif"><i id="item" class="fa-regular fa-pen-to-square"></i>modifier</a>
 		</div>
 
 		<div class="gallery" id="work"></div>
@@ -70,12 +70,17 @@
 
 <aside id="modal">
 	<div class="modalcontent">
-		<span class="close" onclick="hiddenModal()"><i class="fa-solid fa-xmark fa-sm"></i></span>
-		<p>Galerie photo</p>
-		<div id="pictures">
+		<span class="close" id="closemodal"><i class="fa-solid fa-xmark fa-sm"></i></span>
+		<div id="photoGallery">
+			<p>Galerie photo</p>
+			<div id="pictures">
+			</div>
+			<div class="line"></div>
+			<button id="btnAddPicture" type="button">Ajouter une photo</button>
 		</div>
-		<div id="line"></div>
-		<button id="btn" type="button">Ajouter une photo</button>
+		<div id="addpicture">
+
+		</div>
 	</div>
 </aside>
 
