@@ -70,7 +70,10 @@
 
 <aside id="modal">
 	<div class="modalcontent">
-		<span class="close" id="closemodal"><i class="fa-solid fa-xmark fa-sm"></i></span>
+		<div class="iconmodal">
+			<span id="leftArrow"><i class="fa-solid fa-arrow-left"></i></span>
+			<span class="close" id="closemodal"><i class="fa-solid fa-xmark fa-sm"></i></span>
+		</div>
 		<div id="photoGallery">
 			<p>Galerie photo</p>
 			<div id="pictures">
@@ -79,28 +82,7 @@
 			<button id="btnAddPicture" type="button">Ajouter une photo</button>
 		</div>
 
-		<div id="addpicture">
-			<span id="leftArrow"><i class="fa-solid fa-arrow-left"></i></span>
-			<p>Ajout photo</p>
-			<div class="formulaire2">
-				<form>
-					<div id="picturebackground">
-						<span id=logopicture><i class="fa-regular fa-image"></i></span>
-						<input type="file" id="filebtnpicture" hidden>
-						<button id="addPicture">+ Ajouter photo</button>
-						<div id="size">jpg, ping : 4mo max</div>
-					</div>
-					<h3>Titre</h3>
-					<input id="thetitle" type="title">
-					<h3>Catégorie</h3>
-					<select name="categorie" id="choosecategory">
-						<option value=""></option>
-						<option value="objects">Objets</option>
-					</select>
-				</form>
-				<div class="line2"></div>
-				<button id="btnValidation">Valider</button>
-			</div>
+		<div id="addWork">
 		</div>
 	</div>
 </aside>

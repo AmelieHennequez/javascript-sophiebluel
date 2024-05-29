@@ -128,6 +128,10 @@ async function displayModal() {
   idmodal.addEventListener("click", function () {
     hiddenModal();
   });
+  const stopPropagation = function (e) {
+    e.stopPropagation();
+  };
+  idmodal.querySelector('.modalcontent').addEventListener('click', stopPropagation);
 
   const btnaddpicture = document.getElementById("btnAddPicture");
   btnaddpicture.addEventListener("click", function () {
@@ -141,26 +145,123 @@ function hiddenModal() {
   idmodal.style.display = "none";
   pictures.innerHTML = "";
 
-  const addpicture = document.getElementById("addpicture");
+  const addWork = document.getElementById("addWork");
   const photogallery = document.getElementById("photoGallery");
   photogallery.style.display = "block";
-  addpicture.style.display = "none";
+  addWork.style.display = "none";
+  addWork.innerHTML = "";
 }
 
-function displayAddPicture() {
-  const addpicture = document.getElementById("addpicture");
+async function displayAddPicture() {
+  const addWork = document.getElementById("addWork");
   const photogallery = document.getElementById("photoGallery");
   photogallery.style.display = "none";
-  addpicture.style.display = "block";
+  addWork.style.display = "block";
+  addWork.innerHTML = "";
+
+const title = document.createElement("p");
+addWork.appendChild(title);
+title.textContent = "Ajout photo";
+const formulaire2 = document.createElement("div");
+addWork.appendChild(formulaire2);
+formulaire2.className = "formulaire2";
+const form = document.createElement("form");
+formulaire2.appendChild(form);
+const pictureBackground = document.createElement("div");
+pictureBackground.className = "picturebackground";
+const addPictureContent = document.createElement("div");
+addPictureContent.id = "addPictureContent";
+pictureBackground.appendChild(addPictureContent);
+const previewImageContent = document.createElement("div");
+previewImageContent.id = "previewImageContent";
+previewImageContent.display = "none";
+pictureBackground.appendChild(previewImageContent);
+form.appendChild(pictureBackground);
+const spanLogoPicture = document.createElement("span");
+spanLogoPicture.id = "logopicture";
+addPictureContent.appendChild(spanLogoPicture);
+const i = document.createElement("i");
+i.className = "fa-regular fa-image";
+spanLogoPicture.appendChild(i);
+const input = document.createElement("input");
+input.type = "file";
+input.id = "filebtnpicture";
+input.hidden = true;
+addPictureContent.appendChild(input);
+
+input.addEventListener("change", function() {
+const file = input.files[0];
+const previewImage = document.createElement("img");
+previewImage.src = window.URL.createObjectURL(file);
+previewImageContent.appendChild(previewImage);
+
+addPictureContent.style.display = "none";
+previewImageContent.style.display = "block";
+});
+
+const buttonAddPicture = document.createElement("button");
+buttonAddPicture.id = "addPicture";
+buttonAddPicture.textContent = "+ Ajouter photo";
+buttonAddPicture.addEventListener("click", function() {
+  input.click();
+});
+
+addPictureContent.appendChild(buttonAddPicture);
+const spanSize = document.createElement("span");
+spanSize.id = "size";
+spanSize.textContent = "jpg, png : 4mo max";
+addPictureContent.appendChild(spanSize);
+const h3Title = document.createElement("h3");
+h3Title.textContent = "Titre";
+form.appendChild(h3Title);
+const inputTitle = document.createElement("input");
+inputTitle.id = "thetitle";
+inputTitle.type = "text";
+inputTitle.addEventListener("change", function() {
+  checkForm();
+})
+form.appendChild(inputTitle);
+const spanErrorTitle = document.createElement("span");
+spanErrorTitle.id = "spanErrorTitle";
+spanErrorTitle.textContent = "le titre ne doit pas être vide";
+form.appendChild(spanErrorTitle);
+const h3Category = document.createElement("h3");
+h3Category.textContent = "Catégorie";
+form.appendChild(h3Category);
+const select = document.createElement("select");
+select.name = "categorie";
+select.id = "choosecategory";
+form.appendChild(select);
+const optionValue = document.createElement("option");
+optionValue.value = "";
+optionValue.textContent = "";
+select.appendChild(optionValue);
+
+const categories = await getCategories();
+categories.forEach((item)=> {
+  const id = item["id"];
+  const name = item["name"];
+  const optionCategorie = document.createElement("option");
+  optionCategorie.value = id;
+  optionCategorie.textContent = name;
+  select.appendChild(optionCategorie);
+});
+
+const divLine = document.createElement("div");
+divLine.className = "line2";
+formulaire2.appendChild(divLine);
+const buttonValidation = document.createElement("button");
+buttonValidation.disabled = true;
+buttonValidation.id = "btnValidation";
+buttonValidation.textContent = "Valider";
+formulaire2.appendChild(buttonValidation);
+
 
   const leftarrow = document.getElementById("leftArrow");
   leftarrow.addEventListener("click", function () {
     photogallery.style.display = "block";
-    addpicture.style.display = "none";
-  });
-  const filebtnpicture = document.getElementById("filebtnpicture");
-  document.getElementById("addPicture").addEventListener("click", function() {
-    filebtnpicture.click();
+    addWork.style.display = "none";
+    addWork.innerHTML = "";
   });
 }
 
@@ -223,7 +324,28 @@ async function updateWorks(type, clear=false) {
       throw new Error("Mise à jour impossible");
     }
     
-  });
-
-
+  });  
 }
+
+function checkForm() {
+  const inputTitle = document.getElementById("thetitle");
+  const spanErrorTitle = document.getElementById("spanErrorTitle");
+  const btnValidation = document.getElementById("btnValidation");
+  let errorCount = 0;
+  if (inputTitle.value!=="") {
+    console.log("titre: ok");
+    if (errorCount>0) {
+      errorCount-1;
+    } 
+    spanErrorTitle.style.display = "none";
+  } else {
+    errorCount++;
+    spanErrorTitle.style.display = "block";
+  }
+  console.log(errorCount);
+  if (errorCount===0) {
+    btnValidation.disabled=false;
+  } else {
+    btnValidation.disabled=true;
+  }
+}    
