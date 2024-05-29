@@ -24,6 +24,15 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+#editMod {
+	background-color: black;
+	width: 1440px;
+	height: 59px;
+	color : white;
+	text-align: center;
+	display: none;
+}
+
 a {
 	text-decoration: none;
 	color: black;
@@ -264,6 +273,7 @@ color: #3D3D3D;
 	font-size: 24px;
 	display: block;
 	margin-left: 20px;
+	display: none;
 }
 
 #addpicture p {
@@ -333,6 +343,11 @@ color: #3D3D3D;
 	font-family: 'Syne';
 }
 
+.btnValidationValid {
+	border: 1px solid #1D6154 !important;
+	background-color: #1D6154 !important;
+}
+
 .formulaire2 {
 	display: flex;
 	justify-content: center;
@@ -366,12 +381,14 @@ color: #3D3D3D;
 	display: block;
 	width: 129px;
 	height: 169px;
+	margin: auto;
 }
 
-#spanErrorTitle {
+.spanError{
 	display: none;
 	color: red;
 }
+
 
 footer {
 	margin-top: 400px;

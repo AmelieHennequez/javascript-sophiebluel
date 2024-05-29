@@ -102,6 +102,8 @@ if (window.localStorage.getItem("userToken") !== null) {
   logout.addEventListener("click", function () {
     logOut();
   });
+  const editMod = document.getElementById("editMod");
+  editMod.style.display="block";
 }
 
 function logOut() {
@@ -113,6 +115,9 @@ function logOut() {
     login.style.display = "block";
     const modif = document.getElementById("modif");
     modif.style.display = "none";
+
+    const editMod = document.getElementById("editMod");
+    editMod.style.display="none";
   }
 }
 
@@ -137,6 +142,9 @@ async function displayModal() {
   btnaddpicture.addEventListener("click", function () {
     displayAddPicture();
   });
+  
+  const leftarrow = document.getElementById("leftArrow");
+  leftarrow.style.display = "none";
 }
 
 function hiddenModal() {
@@ -192,6 +200,7 @@ addPictureContent.appendChild(input);
 input.addEventListener("change", function() {
 const file = input.files[0];
 const previewImage = document.createElement("img");
+checkForm();
 previewImage.src = window.URL.createObjectURL(file);
 previewImageContent.appendChild(previewImage);
 
@@ -201,12 +210,17 @@ previewImageContent.style.display = "block";
 
 const buttonAddPicture = document.createElement("button");
 buttonAddPicture.id = "addPicture";
+
 buttonAddPicture.textContent = "+ Ajouter photo";
 buttonAddPicture.addEventListener("click", function() {
   input.click();
 });
-
+const spanErrorPicture = document.createElement("span");
+spanErrorPicture.id = "spanErrorPicture";
+spanErrorPicture.className = "spanError";
+spanErrorPicture.textContent = "Le contenu ne doit pas être vide";
 addPictureContent.appendChild(buttonAddPicture);
+form.appendChild(spanErrorPicture);
 const spanSize = document.createElement("span");
 spanSize.id = "size";
 spanSize.textContent = "jpg, png : 4mo max";
@@ -219,10 +233,11 @@ inputTitle.id = "thetitle";
 inputTitle.type = "text";
 inputTitle.addEventListener("change", function() {
   checkForm();
-})
+});
 form.appendChild(inputTitle);
 const spanErrorTitle = document.createElement("span");
 spanErrorTitle.id = "spanErrorTitle";
+spanErrorTitle.className = "spanError";
 spanErrorTitle.textContent = "le titre ne doit pas être vide";
 form.appendChild(spanErrorTitle);
 const h3Category = document.createElement("h3");
@@ -231,7 +246,15 @@ form.appendChild(h3Category);
 const select = document.createElement("select");
 select.name = "categorie";
 select.id = "choosecategory";
+const spanErrorCategory = document.createElement("span");
+spanErrorCategory.id = "spanErrorCategory";
+spanErrorCategory.className = "spanError";
+spanErrorCategory.textContent = "La catégorie ne doit pas être vide";
 form.appendChild(select);
+form.appendChild(spanErrorCategory);
+choosecategory.addEventListener("change", function() {
+  checkForm();
+})
 const optionValue = document.createElement("option");
 optionValue.value = "";
 optionValue.textContent = "";
@@ -262,7 +285,9 @@ formulaire2.appendChild(buttonValidation);
     photogallery.style.display = "block";
     addWork.style.display = "none";
     addWork.innerHTML = "";
+    leftarrow.style.display = "none";
   });
+  leftarrow.style.display = "block";
 }
 
 async function deleteWorks(idwork) {
@@ -331,8 +356,12 @@ function checkForm() {
   const inputTitle = document.getElementById("thetitle");
   const spanErrorTitle = document.getElementById("spanErrorTitle");
   const btnValidation = document.getElementById("btnValidation");
+  const chooseCategory = document.getElementById("choosecategory");
+  const spanErrorCategory = document.getElementById("spanErrorCategory");
+  const filebtnpicture = document.getElementById("filebtnpicture");
+  const spanErrorPicture = document.getElementById("spanErrorPicture");
   let errorCount = 0;
-  if (inputTitle.value!=="") {
+  if (inputTitle.value !== "") {
     console.log("titre: ok");
     if (errorCount>0) {
       errorCount-1;
@@ -343,9 +372,33 @@ function checkForm() {
     spanErrorTitle.style.display = "block";
   }
   console.log(errorCount);
+
+  console.log(chooseCategory.value);
+if (chooseCategory.value !== "") {
+    if (errorCount>0) {
+      errorCount-1;
+    }
+    spanErrorCategory.style.display = "none";
+    } else {
+      errorCount++;
+      spanErrorCategory.style.display = "block";
+    }
+if (filebtnpicture.value !== "") {
+  if (errorCount>0) {
+    errorCount-1;
+  }
+  spanErrorPicture.style.display = "none";
+} else {
+  errorCount++;
+  spanErrorPicture.style.display = "block";
+}
+
+
   if (errorCount===0) {
     btnValidation.disabled=false;
+    btnValidation.className = "btnValidationValid";
   } else {
     btnValidation.disabled=true;
+    btnValidation.className = "";
   }
-}    
+}
