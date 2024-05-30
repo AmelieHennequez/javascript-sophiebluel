@@ -12,84 +12,86 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-	<div id="editMod">
-		<p><i id="editLogo" class="fa-regular fa-pen-to-square"></i>Mode édition</p>
-	</div>
-<header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<a id="login" href="login.html" alt="login"><li>login</li></a>
-			<li id="logout">logout</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
-<main>
-	<section id="introduction">
-		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
-		</figure>
-		<article>
-			<h2>Designer d'espace</h2>
-			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
-		</article>
-	</section>
-	<section id="portfolio">
-		<div class="projectsandmodal">
-			<h2>Mes Projets</h2>
-			<a href="#modal" id="modif"><i id="item" class="fa-regular fa-pen-to-square"></i>modifier</a>
+		<div id="editMode">
+			<p><i id="editLogo" class="fa-regular fa-pen-to-square"></i>Mode édition</p>
 		</div>
-
-		<div class="gallery" id="work"></div>
-	</section>
-	
-	<section id="contact">
-		<h2>Contact</h2>
-		<p>Vous avez un projet ? Discutons-en !</p>
-		<form action="#" method="post">
-			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
-			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
-		</form>
-	</section>
-</main>
-
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
-
-<aside id="modal">
-	<div class="modalcontent">
-		<div class="iconmodal">
-			<span id="leftArrow"><i class="fa-solid fa-arrow-left"></i></span>
-			<span class="close" id="closemodal"><i class="fa-solid fa-xmark fa-sm"></i></span>
-		</div>
-		<div id="photoGallery">
-			<p>Galerie photo</p>
-			<div id="pictures">
+<div id="contener">
+	<header>
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li>projets</li>
+				<li>contact</li>
+				<a id="login" href="login.html" alt="login"><li>login</li></a>
+				<li id="logout">logout</li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="introduction">
+			<figure>
+				<img src="./assets/images/sophie-bluel.png" alt="">
+			</figure>
+			<article>
+				<h2>Designer d'espace</h2>
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
+				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
+			</article>
+		</section>
+		<section id="portfolio">
+			<div class="projectsandmodal">
+				<h2>Mes Projets</h2>
+				<a href="#modal" id="modif"><i id="item" class="fa-regular fa-pen-to-square"></i>modifier</a>
 			</div>
-			<div class="line"></div>
-			<button id="btnAddPicture" type="button">Ajouter une photo</button>
-		</div>
 
-		<div id="addWork">
+			<div class="gallery" id="work"></div>
+		</section>
+		
+		<section id="contact">
+			<h2>Contact</h2>
+			<p>Vous avez un projet ? Discutons-en !</p>
+			<form action="#" method="post">
+				<label for="name">Nom</label>
+				<input type="text" name="name" id="name">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+				<input type="submit" value="Envoyer">
+			</form>
+		</section>
+	</main>
+
+	<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
+
+	<aside id="modal">
+		<div class="modalcontent">
+			<div class="iconmodal">
+				<span id="leftArrow"><i class="fa-solid fa-arrow-left"></i></span>
+				<span class="close" id="closemodal"><i class="fa-solid fa-xmark fa-sm"></i></span>
+			</div>
+			<div id="photoGallery">
+				<p>Galerie photo</p>
+				<div id="pictures">
+				</div>
+				<div class="line"></div>
+				<button id="btnAddPicture" type="button">Ajouter une photo</button>
+			</div>
+
+			<div id="addWork">
+			</div>
 		</div>
-	</div>
-</aside>
+	</aside>
 
 <script src="./assets/script.js"></script>
+</div>
 </body>
 </html>

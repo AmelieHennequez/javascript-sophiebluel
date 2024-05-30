@@ -24,12 +24,13 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-#editMod {
+#editMode {
 	background-color: black;
-	width: 1440px;
+	width: 100%;
 	height: 59px;
 	color : white;
-	text-align: center;
+	align-items: center;
+	justify-content: center;
 	display: none;
 }
 
@@ -168,6 +169,7 @@ color: #3D3D3D;
 	display: flex;
 	gap: 548px;
     padding-top: 20px;
+	justify-content: end;
 }
 
 #item {
@@ -198,6 +200,7 @@ color: #3D3D3D;
 
 .close {
 	font-size: 24px;
+	margin-right: 10px;
 }
 
 .modalcontent p {
@@ -421,7 +424,7 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
-body {
+#contener {
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;

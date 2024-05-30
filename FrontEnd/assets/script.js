@@ -102,8 +102,8 @@ if (window.localStorage.getItem("userToken") !== null) {
   logout.addEventListener("click", function () {
     logOut();
   });
-  const editMod = document.getElementById("editMod");
-  editMod.style.display="block";
+  const editMode = document.getElementById("editMode");
+  editMode.style.display="flex";
 }
 
 function logOut() {
@@ -116,8 +116,8 @@ function logOut() {
     const modif = document.getElementById("modif");
     modif.style.display = "none";
 
-    const editMod = document.getElementById("editMod");
-    editMod.style.display="none";
+    const editMode = document.getElementById("editMode");
+    editMode.style.display="none";
   }
 }
 
@@ -279,6 +279,9 @@ buttonValidation.id = "btnValidation";
 buttonValidation.textContent = "Valider";
 formulaire2.appendChild(buttonValidation);
 
+buttonValidation.addEventListener("click", function() {
+  createProject();
+});
 
   const leftarrow = document.getElementById("leftArrow");
   leftarrow.addEventListener("click", function () {
@@ -362,7 +365,6 @@ function checkForm() {
   const spanErrorPicture = document.getElementById("spanErrorPicture");
   let errorCount = 0;
   if (inputTitle.value !== "") {
-    console.log("titre: ok");
     if (errorCount>0) {
       errorCount-1;
     } 
@@ -371,9 +373,7 @@ function checkForm() {
     errorCount++;
     spanErrorTitle.style.display = "block";
   }
-  console.log(errorCount);
 
-  console.log(chooseCategory.value);
 if (chooseCategory.value !== "") {
     if (errorCount>0) {
       errorCount-1;
@@ -401,4 +401,28 @@ if (filebtnpicture.value !== "") {
     btnValidation.disabled=true;
     btnValidation.className = "";
   }
+}
+
+async function createProject() {
+
+  const inputTitle = document.getElementById("thetitle").value;
+  const chooseCategory = document.getElementById("choosecategory").value;
+  const filebtnpicture = document.getElementById("filebtnpicture").files[0];
+  const formData = new FormData();
+  formData.append("image", filebtnpicture);
+  formData.append("title", inputTitle);
+  formData.append("category", chooseCategory);
+
+  const response = await fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: { "Authorization": "Bearer "+window.localStorage.getItem("userToken") },
+    body: formData
+
+  }); 
+
+  if (response.status===201) {
+    hiddenModal();
+    updateWorks("welcome", true)
+  } else 
+  throw new Error("une erreur est survenue");
 }
